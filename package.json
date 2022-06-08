@@ -54,10 +54,6 @@
     "webpack-bundle-analyzer": "4.5.0"
   },
   "youwol": {
-    "pipeline": {
-      "name": "yw_pipeline_webpack_ts",
-      "version": "0.0.0"
-    },
     "cdnDependencies": {
       "@youwol/flux-view": "^0.1.1",
       "@youwol/cdn-client": "^0.1.3"
