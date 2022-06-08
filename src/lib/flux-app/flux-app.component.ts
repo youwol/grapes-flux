@@ -42,7 +42,7 @@ export class FluxAppComponent {
                     {
                         name: 'app',
                         type: 'text',
-                        label: "Application's id",
+                        label: "Asset's id",
                     },
                 ],
             },
