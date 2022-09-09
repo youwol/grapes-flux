@@ -1,14 +1,29 @@
+const apiVersion = "002"
+const externals = {
+    "@youwol/flux-view": "@youwol/flux-view_APIv01",
+    "@youwol/cdn-client": "@youwol/cdn-client_APIv01",
+    "rxjs": "rxjs_APIv6",
+    "grapesjs": "grapesjs_APIv018",
+    "@youwol/cdn-client)": {
+        "commonjs": "@youwol/cdn-client)",
+        "commonjs2": "@youwol/cdn-client)",
+        "root": [
+            "@youwol/cdn-client_APIv01"
+        ]
+    }
+}
 const path = require('path')
+const pkg = require('./package.json')
 const ROOT = path.resolve(__dirname, 'src')
 const DESTINATION = path.resolve(__dirname, 'dist')
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer')
 
-const packageJson = require('./package.json')
-const assetId = Buffer.from(packageJson.name).toString('base64')
+const assetId = Buffer.from(pkg.name).toString('base64')
+
 module.exports = {
     context: ROOT,
     entry: {
-        [packageJson.name]: './lib/index.ts',
+        main: './index.ts',
     },
     plugins: [
         new BundleAnalyzerPlugin({
@@ -18,18 +33,19 @@ module.exports = {
         }),
     ],
     output: {
-        publicPath: `/api/assets-gateway/raw/package/${assetId}/${packageJson.version}/dist/`,
         path: DESTINATION,
+        publicPath: `/api/assets-gateway/raw/package/${assetId}/${pkg.version}/dist/`,
         libraryTarget: 'umd',
         umdNamedDefine: true,
-        library: packageJson.name,
-        filename: packageJson.name + '.js',
+        library: `${pkg.name}_APIv${apiVersion}`,
+        filename: pkg.name + '.js',
         globalObject: `(typeof self !== 'undefined' ? self : this)`,
     },
     resolve: {
         extensions: ['.ts', 'tsx', '.js'],
         modules: [ROOT, 'node_modules'],
     },
+    externals,
     module: {
         rules: [
             {
@@ -38,22 +54,6 @@ module.exports = {
                 exclude: /node_modules/,
             },
         ],
-    },
-    externals: {
-        lodash: {
-            commonjs: 'lodash',
-            commonjs2: 'lodash',
-            root: '_',
-        },
-        rxjs: 'rxjs',
-        'rxjs/operators': {
-            commonjs: 'rxjs/operators',
-            commonjs2: 'rxjs/operators',
-            root: ['rxjs', 'operators'],
-        },
-        '@youwol/cdn-client': '@youwol/cdn-client',
-        '@youwol/flux-view': '@youwol/flux-view',
-        grapesjs: 'grapesjs',
     },
     devtool: 'source-map',
 }
