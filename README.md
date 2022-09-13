@@ -1,7 +1,9 @@
+# @youwol/grapes-flux
+
 Various components for grapes to play with Flux assets.
 
 This library is part of the hybrid cloud/local ecosystem 
-[YouWol](https://platform.youwol.com/applications/@youwol/platform/latest)
+[YouWol](https://platform.youwol.com/applications/@youwol/platform/latest).
 
 ## Links
 
