@@ -1,7 +1,7 @@
 {
     "name": "@youwol/grapes-flux",
     "description": "Various components for grapes to play with Flux assets.",
-    "version": "0.1.0",
+    "version": "0.1.1",
     "author": "greinisch@youwol.com",
     "homepage": "https://github.com/youwol/grapes-flux#README.md",
     "main": "dist/@youwol/grapes-flux.js",
@@ -59,12 +59,12 @@
         ]
     },
     "dependencies": {
-        "@youwol/flux-view": "^1.0.0",
+        "@youwol/flux-view": "^1.0.3",
         "rxjs": "^6.5.5"
     },
     "youwol": {
         "cdnDependencies": {
-            "@youwol/flux-view": "^1.0.0",
+            "@youwol/flux-view": "^1.0.3",
             "rxjs": "^6.5.5"
         }
     }
